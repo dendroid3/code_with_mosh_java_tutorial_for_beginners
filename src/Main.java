@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -88,6 +89,77 @@ public class Main {
     }
 
     public static void arithmeticExpressions () {
+        int firstNumber = 1;
+        int secondNumber = 2;
 
+        int additionResult = firstNumber + secondNumber;
+        System.out.println(firstNumber + "+" + secondNumber + "=" + additionResult);
+
+        int subtractionResult = firstNumber - secondNumber;
+        System.out.println(firstNumber + "-" + secondNumber + "=" + subtractionResult);
+
+        int multiplicationResult = firstNumber * secondNumber;
+        System.out.println(firstNumber + "*" + secondNumber + "=" + multiplicationResult);
+
+        float divisionResult = (float) firstNumber / secondNumber;
+        System.out.println(firstNumber + "/" + secondNumber + "=" + divisionResult);
+
+        int modulusResult = firstNumber % secondNumber;
+        System.out.println(firstNumber + "%" + secondNumber + "=" + modulusResult);
+
+        casting();
+    }
+
+    public static void casting() {
+        // Basically changing one variable type to another.
+        // Implicit casting - Automatic conversion, happens when changing a smaller
+        // variable type to a larger type.
+        // byte -> short -> int -> long
+        // Implicit casting happens when there will be no data loss;
+
+        short x = 3; // two bytes
+        int y = x + 5; // two bytes
+        // ^ What happened under the hood is that the short was converted to an integer
+        System.out.println(x);
+
+        // In explicit casting, one has to specify the data type as such:
+        double z = 1.1;
+        int z1 = (int) z + 4;
+        // ^ The double z is turned into an int by truncating the decimal points
+        System.out.println(z1);
+
+        // Note: You cannot cast a string into an integer
+        // One should use wrapper types. // .parseSomeDataType
+        // Parsing is helpful since most UIs pass parameters as the String type
+        String string = "15";
+        int newInteger = Integer.parseInt(string);
+        System.out.println(newInteger);
+
+        math();
+    }
+
+    public static void math() {
+        float x = 1.6F;
+        float y = x + 5;
+        int roundedFloat = Math.round(x);
+        System.out.println(x + " rounded off is " + roundedFloat);
+        double ceilFloat = Math.ceil(x);
+        System.out.println("The ceil of " + x + " is " + ceilFloat);
+        double floorNumber = Math.floor(x);
+        System.out.println("The floor of " + x + " is " +  floorNumber);
+        float maxNumber = Math.max(x, y);
+        System.out.println("The maximum number between " + x + " and " + y + " is " + maxNumber);
+        double randomNumber = (int) (Math.random()*100);
+        System.out.println("We have generated a random number " + randomNumber);
+
+        formatNumbers();
+    }
+
+    public static void formatNumbers () {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        System.out.println(currency.format(2323.45));
+
+        NumberFormat percentage = NumberFormat.getPercentInstance();
+        System.out.println(percentage.format(0.4));
     }
 }
